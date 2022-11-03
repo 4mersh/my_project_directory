@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+
+<hr>
+<hr>
+<div class="container row row-cols-6 g-4 mt-5 mx-5 gap-3">
+{% for events in events %}
+
+    <div class="card" style="width: 18rem;">
+    <img src="{{ asset('uploads' ~ events.image)}}" class="card-img-top" alt="{{events.name}}">
+    <div class="card-body">
+        <h5 class="card-title">{{events.name}}</h5>
+        <a href="/details/{{events.id}}" class="btn btn-primary">Go to Event's Info</a>
+        <p class="card-text">{{events.date |date()}}</p>
+        <a href="/edit/{{events.id}}" class="btn btn-success">Edit</a>
+        <a href="/delete/{{events.id}}" class="btn btn-danger">Delete</a>
+    </div>
+    </div>
+{% endfor %}
+
+</div>
+  
+
+{% endblock %}

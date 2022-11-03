@@ -1,0 +1,29 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<hr>
+<hr>
+<div class="container mt-5">
+    <div class="card mb-3">
+    <img src="{{events.image}}" class="card-img-top" alt="{{events.name}}">
+    <div class="card-body">
+        <h5 class="card-title">{{events.name}}</h5>
+        <p class="card-text">{{events.description}}</p>
+        <p class="card-text"><small class="text-muted">{{events.date |date()}}</small></p>
+        <p class="card-text">{{events.capacity}}</p>
+        <p class="card-text">{{events.url}}</p>
+        <p class="card-text">{{events.type}}</p>
+        <hr>
+        <p class="form btn btn-secondary">Contact</p><br>
+        <p class="card-text">{{events.address}}</p>
+        <p class="card-text">{{events.email}}</p>
+        <p class="card-text">{{events.phone}}</p>
+        <hr>
+        <a href="/" class="btn btn-primary">Back to Home</a>
+      
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}
