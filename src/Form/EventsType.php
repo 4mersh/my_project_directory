@@ -25,15 +25,15 @@ class EventsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type your events Name!!"]])
+            ->add('name', TextType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type your Events Name!!"]])
             ->add('Date', DateTimeType::class, ["attr"=> ["class" => "form-control mb-3"]])
             ->add('description', TextType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type Description !!"]])
             ->add('capacity', IntegerType::class, ["attr"=> ["class" => "form-control mb-3"]])
             ->add('email', EmailType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type your Email"]])
-            ->add('address',TextType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type your events Address"]])
+            ->add('address',TextType::class, ["attr"=> ["class" => "form-control mb-3" , "placeholder"=> "Type your Events Address"]])
             ->add('url', UrlType::class, ["attr"=> ["class" => "form-control mb-3"]])
             ->add('image', FileType::class, [
-                'label' => 'image (png, jpg, web)',
+                'label' => 'image (png, jpg)',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -41,8 +41,7 @@ class EventsType extends AbstractType
                         'maxSize' => '1024k',
                         'mimeTypes' => [
                             'image/png',
-                            'image/jpg',
-                            'image/web',
+                            'image/jpg', 
                         ],
                         'mimeTypesMessage' => 'Please upload a valid image document',
                     ])

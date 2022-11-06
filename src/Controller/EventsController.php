@@ -12,6 +12,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\EntityRepository;
+use App\Repository\EventsRepository;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+
 
 
 
@@ -20,7 +25,7 @@ class EventsController extends AbstractController
     #[Route('/', name: 'app_events')]
     public function index(ManagerRegistry $doctrine): Response
     {
-        $events = $doctrine->getRepository(events::class)->findAll();
+        $events = $doctrine->getRepository(Events::class)->findAll();
         return $this->render('events/index.html.twig', [
             "events" => $events
         ]);
@@ -129,6 +134,18 @@ class EventsController extends AbstractController
 
         return $this->renderForm('/image/new.html.twig', [
             'form' => $form,
+        ]);
+    }
+
+
+    #[Route('/Type/{type}', name: 'product_show')]
+    public function show($type, EventsRepository $EventsRepository, ManagerRegistry $doctrine): Response
+    {
+        
+        
+        $events = $doctrine->getRepository(Events::class)->findBy(array("type"=> $type));
+        return $this->render('events/Type.html.twig', [
+            "events" => $events
         ]);
     }
 
